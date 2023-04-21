@@ -107,14 +107,14 @@ class ProfileComponent extends Component {
           >
             
             {isLogginActive && (
-              <Login
+              <login
                 handleChange={this.handleChange}
                 handleSubmit={this.handleSubmit}
                 containerRef={ref => (this.current = ref)}
               />
             )}
             {!isLogginActive && (
-              <Register 
+              <register 
                 containerRef={ref => (this.current = ref)} handleChange={this.handleChange}
                 handleRegister={this.handleRegister}
                 />

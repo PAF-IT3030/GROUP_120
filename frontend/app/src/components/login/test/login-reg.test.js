@@ -1,7 +1,7 @@
 import { shallow } from 'enzyme';
 import React from 'react';
-import { Login } from '../login.jsx';
-import { Register } from '../register.jsx';
+import { Login } from '../login';
+import { Register } from '../register';
 
 describe('Login/Register Component', () => {
     const login = shallow(<Login/>);
