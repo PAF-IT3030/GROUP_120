@@ -2,14 +2,11 @@
 
 A full-stack, mobile friendly social media platform using Sprint Boot Maven. 
 
-
-
 - Central Authentication API - Login/Register/Validation
 - User profile wall - including personal information, avatar, background cover
 - CRUD User status, comments on user status
 - Hot reload on user's update
 - Private Message
-
 
 ## Technologies:
 - Backend: **Spring Boot**, **Maven**

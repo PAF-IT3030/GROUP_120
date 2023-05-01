@@ -26,7 +26,7 @@ export default class ChatModule extends Component {
     scrollToBottom = () => {
         var object = this.refs.messageBox;
         if (object)
-          object.scrollTop = object.scrollHeight;
+            object.scrollTop = object.scrollHeight;
     }
 
     componentDidUpdate() {
@@ -35,7 +35,7 @@ export default class ChatModule extends Component {
 
     handleSendMessage = () => {
         this.props.sendMessage('CHAT', this.state.chatMessage, this.props.receiver);
-        this.setState({ chatMessage: ''})
+        this.setState({ chatMessage: '' })
     }
 
     handleTyping = (event) => {
@@ -52,34 +52,36 @@ export default class ChatModule extends Component {
     }
 
     handleToggle = () => {
-        this.setState({hide: !this.state.hide});
+        this.setState({ hide: !this.state.hide });
     }
     render() {
         return (
-        <div className="chatBox" style={this.state.hide ? {bottom: -340 + 'px'} : {}}>
-            <div className="chatTitle" onClick={this.handleToggle}>
-                <Avatar username={this.props.receiver}/> <a href={'/profile/' + this.props.receiver}> {this.props.receiver} </a>
-                <div className="chatBox-right"> <a onClick={this.handleClose} className="closeBtn">
-                    <YourSvg/> </a>
+            <div className="chatBox" style={this.state.hide ? { bottom: -340 + 'px' } : {}}>
+                <div className="chatTitle" onClick={this.handleToggle}>
+                    <Avatar username={this.props.receiver} /> <a href={'/profile/' + this.props.receiver}> {this.props.receiver} </a>
+                    <div className="chatBox-right">
+                        <button onClick={this.handleClose} className="closeBtn">
+                            <YourSvg />
+                        </button>
+                    </div>
                 </div>
-            </div>
-            
-            <ul className="chatView" ref="messageBox">
-            {this.props.broadcastMessage.map((msg, i) => 
-                ( (msg.receiver === this.props.receiver && msg.sender === this.props.username) || 
-                (msg.receiver === this.props.username && msg.sender === this.props.receiver)) ?
-            <li key={i}> {(msg.sender === this.props.username) ? "You" : msg.sender} : {msg.message}</li> : null
-            )}
-            </ul>
-            <div className="chatControl" ref="chatControl">
-                <input value={this.state.chatMessage} onChange={this.handleTyping} onKeyPress={event => {
-                    if (event.key === 'Enter') {
-                        this.handleSendMessage();
-                    }
-                }}/>
-                
-                <Send onClick={this.handleSendMessage}/>
-            </div>
-        </div>);
+
+                <ul className="chatView" ref="messageBox">
+                    {this.props.broadcastMessage.map((msg, i) =>
+                        ((msg.receiver === this.props.receiver && msg.sender === this.props.username) ||
+                            (msg.receiver === this.props.username && msg.sender === this.props.receiver)) ?
+                            <li key={i}> {(msg.sender === this.props.username) ? "You" : msg.sender} : {msg.message}</li> : null
+                    )}
+                </ul>
+                <div className="chatControl" ref="chatControl">
+                    <input value={this.state.chatMessage} onChange={this.handleTyping} onKeyPress={event => {
+                        if (event.key === 'Enter') {
+                            this.handleSendMessage();
+                        }
+                    }} />
+
+                    <Send onClick={this.handleSendMessage} />
+                </div>
+            </div>);
     }
 }
