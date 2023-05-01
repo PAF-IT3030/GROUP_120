@@ -87,7 +87,7 @@ export default class ChatBoxSide extends Component {
 
     onMessageReceived = (payload) => {
         let message = JSON.parse(payload.body);
-        if (message.receiver == this.state.username && !this.state.receiver.includes(message.sender)) {
+        if (message.receiver === this.state.username && !this.state.receiver.includes(message.sender)) {
             this.setState(prevState => ({
                 receiver: [...prevState.receiver, message.sender]
             }))
