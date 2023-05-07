@@ -12,7 +12,6 @@ class UpdateDetails extends React.Component {
         this.state = {
             firstname: this.props.firstname,
             lastname: this.props.lastname,
-            studentnumber: this.props.studentnumber,
             email: this.props.email,
             phonenumber: this.props.phonenumber,
             aboutme: this.props.aboutme ? this.props.aboutme : "",
@@ -38,7 +37,6 @@ class UpdateDetails extends React.Component {
                     firstname: response.data.firstname,
                     lastname: response.data.lastname,
                     email: response.data.email,
-                    studentnumber: response.data.studentnumber,
                     phonenumber: response.data.phonenumber,
                     aboutme: response.data.aboutme
                 });
@@ -51,7 +49,6 @@ class UpdateDetails extends React.Component {
         this.setState({
             firstname: values.firstname,
             lastname: values.lastname,
-            studentnumber: values.studentnumber,
             email: values.email,
             phonenumber: values.phonenumber,
             aboutme: values.aboutme
@@ -62,7 +59,6 @@ class UpdateDetails extends React.Component {
             this.state.firstname,
             this.state.lastname,
             this.state.email,
-            this.state.studentnumber,
             this.state.phonenumber,
             this.state.aboutme).then(() => {
                 this.refreshInfo();
@@ -193,10 +189,6 @@ class UpdateDetails extends React.Component {
                                             </fieldset>
                                             <ErrorMessage name="lastname" component="div"
                                                 className="alert alert-warning" />
-                                            <fieldset className="form-group">
-                                                <label className="title">Student number</label>
-                                                <Field className="form-control" type="text" readOnly name="studentnumber" />
-                                            </fieldset>
 
                                             <fieldset className="form-group">
                                                 <label className="title">Email</label>

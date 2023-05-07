@@ -67,12 +67,6 @@ public class JwtAuthenticationRestController {
 
 	}
 
-	@GetMapping("/jpa/checkuser/studentnumber/{studentnumber}")
-	public boolean checkDuplicateStudentnumber(@PathVariable String studentnumber) {
-		boolean exist = jwtInMemoryUserDetailsService.checkStudentnumber(studentnumber);
-		return exist;
-
-	}
 	
 	@GetMapping("/jpa/checkuser/email/{email}")
 	public boolean checkDuplicateEmail(@PathVariable String email) {

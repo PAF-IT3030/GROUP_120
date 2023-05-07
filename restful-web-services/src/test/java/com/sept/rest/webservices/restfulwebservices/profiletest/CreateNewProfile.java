@@ -37,7 +37,6 @@ public class CreateNewProfile {
 		newProfile1.setFirstname("Lam");
 		newProfile1.setLastname("Tran");
 		newProfile1.setEmail("lamtran@gmail.com");
-		newProfile1.setStudentnumber("s3714110");
 		newProfile1.setPhonenumber("0432691030");
 		
 		
@@ -45,7 +44,6 @@ public class CreateNewProfile {
 		newProfile2.setFirstname("Sept");
 		newProfile2.setLastname("Class");
 		newProfile2.setEmail("sept@gmail.com");
-		newProfile2.setStudentnumber("s1111111");
 		newProfile2.setPhonenumber("0432111111");
 		
 		
@@ -61,7 +59,6 @@ public class CreateNewProfile {
 		assertEquals(newProfile1.getFirstname(), test.getFirstname());
 		assertEquals(newProfile1.getLastname(), test.getLastname());
 		assertEquals(newProfile1.getEmail(), test.getEmail());
-		assertEquals(newProfile1.getStudentnumber(), test.getStudentnumber());
 		assertEquals(newProfile1.getPhonenumber(), test.getPhonenumber());
 		
 	}
@@ -77,7 +74,6 @@ public class CreateNewProfile {
 		assertEquals(newProfile2.getFirstname(), test.getFirstname());
 		assertEquals(newProfile2.getLastname(), test.getLastname());
 		assertEquals(newProfile2.getEmail(), test.getEmail());
-		assertEquals(newProfile2.getStudentnumber(), test.getStudentnumber());
 		assertEquals(newProfile2.getPhonenumber(), test.getPhonenumber());
 	}
 	

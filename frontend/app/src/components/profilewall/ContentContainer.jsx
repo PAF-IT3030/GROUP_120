@@ -12,7 +12,6 @@ class ContentContainer extends React.Component {
         this.state = {
             firstname: '',
             lastname: '',
-            studentnumber: '',
             email: '',
             phonenumber: '',
             aboutme: '',
@@ -42,14 +41,12 @@ class ContentContainer extends React.Component {
                     username={this.props.username}
                     firstname={this.state.firstname}
                     lastname={this.state.lastname}
-                    studentnumber={this.state.studentnumber}
                     email={this.state.email}
                     phonenumber={this.state.phonenumber}
                     aboutme={this.state.aboutme}></SideContentComponent> :
                     <UpdateDetails
                         firstname={this.state.firstname}
                         lastname={this.state.lastname}
-                        studentnumber={this.state.studentnumber}
                         email={this.state.email}
                         phonenumber={this.state.phonenumber}
                         aboutme={this.state.aboutme}
@@ -72,7 +69,6 @@ class ContentContainer extends React.Component {
                     firstname: response.data.firstname,
                     lastname: response.data.lastname,
                     email:response.data.email,
-                    studentnumber: response.data.studentnumber,
                     phonenumber: response.data.phonenumber,
                     aboutme: response.data.aboutme
                 });

@@ -10,7 +10,6 @@ class SideContentComponent extends React.Component{
         this.state = {
             firstname: this.props.firstname,
             lastname: this.props.lastname,
-            studentnumber: this.props.studentnumber,
             email: this.props.email,
             phonenumber: this.props.phonenumber,
             aboutme: this.props.aboutme
@@ -29,7 +28,6 @@ class SideContentComponent extends React.Component{
                 this.setState({
                     firstname: response.data.firstname,
                     lastname: response.data.lastname,
-                    studentnumber: response.data.studentnumber,
                     email:response.data.email,
                     phonenumber: response.data.phonenumber,
                     aboutme: response.data.aboutme
@@ -53,8 +51,6 @@ class SideContentComponent extends React.Component{
                             <span className="text">{this.state.firstname} {this.state.lastname}</span></li>
                             <li><span className="title">About Me</span>
                             <span className="text">{this.state.aboutme}</span></li>
-                            <li><span className="title">Student No.</span>
-                            <span className="text">{this.state.studentnumber}</span></li>
                             <li><span className="title">Email</span>
                             <span className="text">{this.state.email}</span></li>
                         </div>

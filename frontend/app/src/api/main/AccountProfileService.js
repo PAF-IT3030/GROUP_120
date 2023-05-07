@@ -23,13 +23,12 @@ class AccountProfileService {
         return axios.put(`${JPA_API_URL}/users/${name}/profile/${id}`, profile);
     }
 
-    updateDetails(username, firstname, lastname, email, studentnumber, phonenumber, aboutme) {
+    updateDetails(username, firstname, lastname, email, phonenumber, aboutme) {
         return axios.post(`${API_URL}/updateProfile`, {
             username,
             firstname,
             lastname,
             email,
-            studentnumber,
             phonenumber,
             aboutme
         })
@@ -41,11 +40,6 @@ class AccountProfileService {
         }
     }
 
-    checkDuplicateStudentnumber(studentnumber) {
-        if (studentnumber != null) {
-            return axios.get(`${JPA_API_URL}/checkuser/studentnumber/${studentnumber}`);
-        }
-    }
 
     checkDuplicateEmail(email) {
         if (email != null) {

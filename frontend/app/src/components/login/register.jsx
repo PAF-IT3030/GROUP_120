@@ -10,12 +10,10 @@ export class Register extends React.Component {
     this.state = {
       firstname: this.props.firstname,
       lastname: this.props.lastname,
-      studentnumber: this.props.studentnumber,
       email: this.props.email,
       phonenumber: this.props.phonenumber,
       aboutme: this.props.aboutme,
       usernamecheck: false,
-      isStudentnumberDuplicate: false,
       isEmailDuplicate: false,
       isPhonenumberDuplicate: false
     }
@@ -42,26 +40,6 @@ export class Register extends React.Component {
     }
   }
 
-  checkDuplicateStudentnumber(studentnumber) {
-
-    if (studentnumber != null) {
-      AccountProfileService.checkDuplicateStudentnumber(studentnumber)
-        .then(response => {
-
-          if (response.data == true) {
-            this.setState({
-              isStudentnumberDuplicate: true
-            });
-          }
-          else if (response.data == false) {
-            this.setState({
-              isStudentnumberDuplicate: false
-            });
-          }
-
-        })
-    }
-  }
 
   checkDuplicateEmail(email) {
     if (email != null) {
@@ -108,12 +86,10 @@ export class Register extends React.Component {
     const nameCheck = /^[a-zA-Z\s]*$/
     const phoneCheck = /^0\d{9}$/
     const emailCheck = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/
-    const studentnumberCheck = /^s[0-9]{7}$/
     const passwordCheck = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})/
 
     this.checkDuplicateUser(values.username);
     this.checkDuplicateEmail(values.email);
-    this.checkDuplicateStudentnumber(values.studentnumber);
     this.checkDuplicatePhonenumber(values.phonenumber);
 
     if (values.username == null) {
@@ -164,13 +140,6 @@ export class Register extends React.Component {
       errors.email = 'This email is already in use'
     }
 
-    if (values.studentnumber == null) {
-      errors.studentnumber = 'Enter your student number'
-    } else if (!studentnumberCheck.test(values.studentnumber)) {
-      errors.studentnumber = 'Please enter a valid student number (includes the s)'
-    } else if (this.state.isStudentnumberDuplicate == true) {
-      errors.studentnumber = 'This student number is already in use'
-    }
 
     return errors
 
@@ -210,14 +179,6 @@ export class Register extends React.Component {
                         </fieldset>
                       </div>
                   </div>
-                  <fieldset className="form-group">
-                    <label htmlFor="studentnumber">Student Number</label>
-                    <OverlayTrigger placement={"bottom"} overlay={<Tooltip id={"tooltip-bottom"}>Please include 's'</Tooltip>}>
-                      <Field className="field" type="text" name="studentnumber" />
-                    </OverlayTrigger>
-                    <ErrorMessage name="studentnumber" component="div"
-                                  className="checkError" />
-                  </fieldset>
 
                   <fieldset className="form-group">
                     <label htmlFor="email">Email</label>

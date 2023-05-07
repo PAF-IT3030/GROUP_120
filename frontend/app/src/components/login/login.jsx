@@ -1,5 +1,17 @@
 import React from "react";
 import {Form} from "formik";
+import {GoogleLogin} from 'react-google-login';
+
+const clientId = "643460842111-r1b9f3fjk6cenot7n9u76g6sb2vavvdr.apps.googleusercontent.com"
+
+const onSuccess = (res) => {
+  console.log("LOGIN SUCCESS! Current user: ", res.profileObj);
+}
+
+const onFailure = (res) => {
+  console.log("LOGIN FAILED! res: ", res);
+}
+
 
 export class Login extends React.Component {
 
@@ -49,6 +61,18 @@ export class Login extends React.Component {
               register
             </button>
           </div>
+
+          <div className="google-login-container">
+            <GoogleLogin
+              clientId={clientId}
+              buttonText="Login With Google"
+              onSuccess={onSuccess}
+              onFailure={onFailure}
+              cookiePolicy={'single_host_origin'}
+              isSignedIn={true}
+            />
+          </div>
+          
         </div>
       </div>
     );

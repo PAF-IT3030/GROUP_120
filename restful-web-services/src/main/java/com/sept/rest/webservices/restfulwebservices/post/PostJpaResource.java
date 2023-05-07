@@ -1,4 +1,6 @@
 package com.sept.rest.webservices.restfulwebservices.post;
+import java.util.Optional;
+
 
 import java.net.URI;
 import java.util.List;
@@ -62,11 +64,73 @@ public class PostJpaResource {
 		return ResponseEntity.noContent().build();
 	}
 
+	@DeleteMapping("/jpa/users/{username}/posts/{postId}/comments/{commentId}")
+	public ResponseEntity<Void> deleteComment(@PathVariable String username,
+											   @PathVariable long postId,
+											   @PathVariable long commentId) {
+	
+		Optional<Post> postOptional = postJpaRepository.findById(postId);
+		if (!postOptional.isPresent()) {
+			return ResponseEntity.notFound().build();
+		}
+	
+		Post post = postOptional.get();
+		List<PostComment> comments = post.getComments();
+	
+		Optional<PostComment> commentOptional = comments.stream()
+				.filter(c -> c.getId() == commentId)
+				.findFirst();
+	
+		if (!commentOptional.isPresent()) {
+			return ResponseEntity.notFound().build();
+		}
+	
+		PostComment comment = commentOptional.get();
+		comments.remove(comment);
+	
+		postJpaRepository.save(post);
+	
+		return ResponseEntity.noContent().build();
+	}
+
 	@DeleteMapping("/jpa/users/{username}/posts/{id}")
 	public ResponseEntity<Void> deleteTodo(@PathVariable String username, @PathVariable long id) {
 		postJpaRepository.deleteById(id);
 		return ResponseEntity.noContent().build();
 	}
+	
+	@PutMapping("/jpa/users/{username}/posts/{postId}/comments/{commentId}")
+	public ResponseEntity<PostComment> updateComment(@PathVariable String username,
+													  @PathVariable long postId,
+													  @PathVariable long commentId,
+													  @RequestBody PostComment comment) {
+	
+		Optional<Post> postOptional = postJpaRepository.findById(postId);
+		if (!postOptional.isPresent()) {
+			return ResponseEntity.notFound().build();
+		}
+	
+		Post post = postOptional.get();
+		List<PostComment> comments = post.getComments();
+	
+		Optional<PostComment> commentOptional = comments.stream()
+				.filter(c -> c.getId() == commentId)
+				.findFirst();
+	
+		if (!commentOptional.isPresent()) {
+			return ResponseEntity.notFound().build();
+		}
+	
+		PostComment oldComment = commentOptional.get();
+		oldComment.setUsername(comment.getUsername());
+		oldComment.setDescription(comment.getDescription());
+		oldComment.setTargetDate(comment.getTargetDate());
+	
+		postJpaRepository.save(post);
+	
+		return new ResponseEntity<PostComment>(oldComment, HttpStatus.OK);
+	}
+	
 	
 
 	@PutMapping("/jpa/users/{username}/posts/{id}")

@@ -34,7 +34,6 @@ public class DuplicateValues {
 		newProfile1.setFirstname("Lam");
 		newProfile1.setLastname("Tran");
 		newProfile1.setEmail("lamtran@gmail.com");
-		newProfile1.setStudentnumber("s3714110");
 		newProfile1.setPhonenumber("0432691030");
 		
 		jwtInMemoryUserDetailsService.update(newProfile1);
@@ -46,11 +45,6 @@ public class DuplicateValues {
 		assertTrue("This email is already in use",jwtInMemoryUserDetailsService.checkEmail("lamtran@gmail.com"));
 	}
 	
-	@Test
-	public void testDuplicateStudentnumber() {
-		assertFalse("This Student number is not in use",jwtInMemoryUserDetailsService.checkStudentnumber("s1111111"));
-		assertTrue("This Student number is already in use",jwtInMemoryUserDetailsService.checkStudentnumber("s3714110"));
-	}
 	
 	@Test
 	public void testDuplicatePhonenumber() {

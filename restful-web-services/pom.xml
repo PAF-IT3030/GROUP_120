@@ -83,11 +83,6 @@
     		<scope>test</scope>
 		</dependency>
 
-		<!-- Comment out the following because of deployment to GCP
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-tomcat</artifactId>
-		</dependency> -->
 	</dependencies>
 
 	<build>

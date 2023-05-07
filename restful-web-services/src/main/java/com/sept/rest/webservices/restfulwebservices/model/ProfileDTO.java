@@ -9,8 +9,6 @@ public class ProfileDTO {
 
 	private String email;
 
-	private String studentnumber;
-
 	private String phonenumber;
 
 	private String aboutme;
@@ -47,13 +45,6 @@ public class ProfileDTO {
 		this.email = email;
 	}
 
-	public String getStudentnumber() {
-		return studentnumber;
-	}
-
-	public void setStudentnumber(String studentnumber) {
-		this.studentnumber = studentnumber;
-	}
 
 	public String getPhonenumber() {
 		return phonenumber;

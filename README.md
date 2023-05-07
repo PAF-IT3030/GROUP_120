@@ -22,7 +22,6 @@ A full-stack, mobile friendly social media platform using Sprint Boot Maven.
 
 After cloning the project, please `cd restful-web-service` and run
 ```
-mvn spring-boot:run
 ```
 The server should be starting on port `8080`
 

@@ -49,7 +49,6 @@ public class PostAndComment {
 		newProfile1.setFirstname("Lam");
 		newProfile1.setLastname("Tran");
 		newProfile1.setEmail("lamtran@gmail.com");
-		newProfile1.setStudentnumber("s3714110");
 		newProfile1.setPhonenumber("0432691030");
 		
 		
@@ -57,7 +56,6 @@ public class PostAndComment {
 		newProfile2.setFirstname("Sept");
 		newProfile2.setLastname("Class");
 		newProfile2.setEmail("sept@gmail.com");
-		newProfile2.setStudentnumber("s1111111");
 		newProfile2.setPhonenumber("0432111111");
 		
 		post1.setDescription("Description 1");

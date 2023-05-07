@@ -45,7 +45,6 @@ public class ProfileNegativeTest {
 		profile3.setFirstname("Sept");
 		profile3.setLastname("Class");
 		profile3.setEmail("sept@gmail.com");
-		profile3.setStudentnumber("s1111111");
 		profile3.setPhonenumber("0432111111");
 		jwtInMemoryUserDetailsService.update(profile3);
 	}
@@ -57,7 +56,6 @@ public class ProfileNegativeTest {
 		profile1.setFirstname("Lam");
 		profile1.setLastname("Tran");
 		profile1.setEmail("lamtran@gmail.com");
-		profile1.setStudentnumber("s3714110");
 		profile1.setPhonenumber("0432691030");
 		jwtInMemoryUserDetailsService.update(profile1);
 	}
@@ -68,7 +66,6 @@ public class ProfileNegativeTest {
 		profile1.setFirstname("13123121 THIS IS !@#@!#!@ NOT A NAME");
 		profile1.setLastname("Tran");
 		profile1.setEmail("lamtran@gmail.com");
-		profile1.setStudentnumber("s3714110");
 		profile1.setPhonenumber("0432691030");
 		jwtInMemoryUserDetailsService.update(profile1);
 	}
@@ -79,7 +76,6 @@ public class ProfileNegativeTest {
 		profile1.setFirstname("Lam");
 		profile1.setLastname("13123121 THIS IS !@#@!#!@ NOT A NAME");
 		profile1.setEmail("lamtran@gmail.com");
-		profile1.setStudentnumber("s3714110");
 		profile1.setPhonenumber("0432691030");
 		jwtInMemoryUserDetailsService.update(profile1);
 	}
@@ -90,21 +86,10 @@ public class ProfileNegativeTest {
 		profile1.setFirstname("Lam");
 		profile1.setLastname("Tran");
 		profile1.setEmail("ksadjakdklsndalkndl");
-		profile1.setStudentnumber("s3714110");
 		profile1.setPhonenumber("0432691030");
 		jwtInMemoryUserDetailsService.update(profile1);
 	}
 
-	@Test(expected = InvalidInputException.class)
-	public void testInvalidStudentnumber() {
-		profile1.setUsername("lam");
-		profile1.setFirstname("Lam");
-		profile1.setLastname("Tran");
-		profile1.setEmail("lamtran@gmail.com");
-		profile1.setStudentnumber("19203u120932109312");
-		profile1.setPhonenumber("0432691030");
-		jwtInMemoryUserDetailsService.update(profile1);
-	}
 
 	@Test(expected = InvalidInputException.class)
 	public void testInvalidPhonenumber() {
@@ -112,7 +97,6 @@ public class ProfileNegativeTest {
 		profile1.setFirstname("Lam");
 		profile1.setLastname("Tran");
 		profile1.setEmail("lamtran@gmail.com");
-		profile1.setStudentnumber("s3714110");
 		profile1.setPhonenumber("9129381290382109");
 		jwtInMemoryUserDetailsService.update(profile1);
 	}
@@ -123,7 +107,6 @@ public class ProfileNegativeTest {
 		profile5.setFirstname("Apple");
 		profile5.setLastname("Banana");
 		profile5.setEmail("applebanana@gmail.com");
-		profile5.setStudentnumber("s4562349");
 		profile5.setPhonenumber("0432461248");
 		jwtInMemoryUserDetailsService.update(profile5);
 	}
@@ -134,7 +117,6 @@ public class ProfileNegativeTest {
 		profile5.setUsername("rmit");
 		profile5.setLastname("Banana");
 		profile5.setEmail("applebanana@gmail.com");
-		profile5.setStudentnumber("s4562349");
 		profile5.setPhonenumber("0432461248");
 		jwtInMemoryUserDetailsService.update(profile5);
 	}
@@ -145,7 +127,6 @@ public class ProfileNegativeTest {
 		profile5.setUsername("rmit");
 		profile5.setFirstname("Apple");
 		profile5.setEmail("applebanana@gmail.com");
-		profile5.setStudentnumber("s4562349");
 		profile5.setPhonenumber("0432461248");
 		jwtInMemoryUserDetailsService.update(profile5);
 	}
@@ -156,21 +137,11 @@ public class ProfileNegativeTest {
 		profile5.setUsername("rmit");
 		profile5.setFirstname("Apple");
 		profile5.setLastname("Banana");
-		profile5.setStudentnumber("s4562349");
 		profile5.setPhonenumber("0432461248");
 		jwtInMemoryUserDetailsService.update(profile5);
 	}
 	
-	@Test(expected = NullPointerException.class)
-	public void testProfileWithNoStudentnumber() {
-		ProfileDTO profile5 = new ProfileDTO();
-		profile5.setUsername("rmit");
-		profile5.setFirstname("Apple");
-		profile5.setLastname("Banana");
-		profile5.setEmail("applebanana@gmail.com");
-		profile5.setPhonenumber("0432461248");
-		jwtInMemoryUserDetailsService.update(profile5);
-	}
+
 	
 	@Test(expected = NullPointerException.class)
 	public void testProfileWithNoPhonenumber() {
@@ -179,7 +150,6 @@ public class ProfileNegativeTest {
 		profile5.setFirstname("Apple");
 		profile5.setLastname("Banana");
 		profile5.setEmail("applebanana@gmail.com");
-		profile5.setStudentnumber("s4562349");
 		jwtInMemoryUserDetailsService.update(profile5);
 	}
 	

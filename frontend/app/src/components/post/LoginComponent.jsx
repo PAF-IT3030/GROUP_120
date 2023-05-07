@@ -15,7 +15,6 @@ class LoginComponent extends Component {
       password: "",
       firstname: 'First name',
       lastname: 'Last name',
-      studentnumber: 'Student number',
       email: 'Email',
       phonenumber: 'Phone number',
       aboutme: 'About me',
@@ -59,7 +58,6 @@ class LoginComponent extends Component {
             values.firstname,
             values.lastname,
             values.email,
-            values.studentnumber,
             values.phonenumber,
             values.aboutme)
 
@@ -137,7 +135,7 @@ class LoginComponent extends Component {
         <div className="LoginComponent">
           <div className="Description">
             <div className="Heading">
-            <h1>MIGHTY FOODS<br/></h1>
+              <h1>MIGHTY FOODS<br/></h1>
             </div>
             <p>
             Food is not just eating energy. It's an experience
@@ -186,7 +184,6 @@ class LoginComponent extends Component {
                   <Register
                       firstname={this.state.firstname}
                       lastname={this.state.lastname}
-                      studentnumber={this.state.studentnumber}
                       email={this.state.email}
                       phonenumber={this.state.phonenumber}
                       aboutme={this.state.aboutme}

@@ -8,6 +8,9 @@ import LogoutComponent from './LogoutComponent.jsx'
 import WelcomeComponent from './WelcomeComponent.jsx'
 import AccountProfile from '../profilewall/AccountProfile.jsx'
 import AccountProfileService from "../../api/main/AccountProfileService";
+import { gapi } from 'gapi-script';
+
+const clientId = "643460842111-r1b9f3fjk6cenot7n9u76g6sb2vavvdr.apps.googleusercontent.com"
 
 class MainApp extends Component {
     constructor(props) {
@@ -17,21 +20,28 @@ class MainApp extends Component {
             value: '',
             renderValue: ''
         }
-        this.handleClick.bind();
-        this.handleChange.bind();
+        this.handleClick = this.handleClick.bind(this);
+        this.handleChange = this.handleChange.bind(this);
     }
 
-    handleClick = (e) => {
+    componentDidMount() {
+        gapi.load('client:auth2', () => {
+            gapi.client.init({
+                clientId: clientId,
+                scope: ""
+            })
+        });
+    }
+
+    handleClick(e) {
         e.preventDefault();
         this.refreshInfo();
         this.redirect();
     }
 
-
-    handleChange = e => {
-        this.setState({ value: e.target.value }, function () {
-        });
-    };
+    handleChange(e) {
+        this.setState({ value: e.target.value });
+    }
 
     redirect() {
         window.location.href = "./profile/" + this.state.value;
@@ -46,9 +56,7 @@ class MainApp extends Component {
                     renderValue: response.data[0]
                 });
             })
-
     }
-
 
     render() {
         return (
@@ -72,4 +80,4 @@ class MainApp extends Component {
     }
 }
 
-export default MainApp
+export default MainApp  

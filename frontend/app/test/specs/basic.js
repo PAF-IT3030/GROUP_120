@@ -56,9 +56,6 @@ describe('Login and Register test', () => {
         const lastName = $('input[name="lastname"]');
         lastName.setValue(user.lastName);
 
-        const sNo = $('input[name="studentnumber"]');
-        sNo.setValue(user.sNo);
-
         const sEmail = $('input[name="email"]');
         sEmail.setValue(user.sEmail);
 
@@ -209,9 +206,6 @@ describe('Create an account for second test user', () => {
 
         const lastName = $('input[name="lastname"]');
         lastName.setValue(user2.lastName);
-
-        const sNo = $('input[name="studentnumber"]');
-        sNo.setValue(user2.sNo);
 
         const sEmail = $('input[name="email"]');
         sEmail.setValue(user2.sEmail);

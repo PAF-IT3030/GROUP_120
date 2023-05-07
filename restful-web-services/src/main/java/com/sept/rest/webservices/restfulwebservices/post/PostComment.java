@@ -13,7 +13,7 @@ public class PostComment {
     private Date targetDate;
 
     public PostComment() {
-        // Default consturctor
+        // Default constructor
     }
 
     public PostComment(String username, String description, Date targetDate) {
@@ -21,17 +21,33 @@ public class PostComment {
         this.description = description;
         this.targetDate = targetDate;
     }
+    
+    public long getId() {
+        return id;
+    }
 
     public String getUsername() {
         return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getDescription() {
         return description;
     }
 
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public Date getTargetDate() {
         return targetDate;
+    }
+
+    public void setTargetDate(Date targetDate) {
+        this.targetDate = targetDate;
     }
 
     @Override

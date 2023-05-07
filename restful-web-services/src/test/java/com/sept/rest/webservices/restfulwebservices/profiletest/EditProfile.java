@@ -37,7 +37,6 @@ public class EditProfile {
 		newProfile1.setFirstname("Lam");
 		newProfile1.setLastname("Tran");
 		newProfile1.setEmail("lamtran@gmail.com");
-		newProfile1.setStudentnumber("s3714110");
 		newProfile1.setPhonenumber("0432691030");
 		
 		jwtInMemoryUserDetailsService.update(newProfile1);
@@ -69,17 +68,7 @@ public class EditProfile {
 		
 	}
 	
-	@Test
-	public void testEditStudentnumber() {
-		newProfile1.setStudentnumber("s1111111");
-		jwtInMemoryUserDetailsService.update(newProfile1);
-		
-		Profile test = profileRepository.findByUsername("lam");
-		
-		assertEquals("s1111111", test.getStudentnumber());
-	
-		
-	}
+
 	
 	@Test
 	public void testEditPhonenumber() {

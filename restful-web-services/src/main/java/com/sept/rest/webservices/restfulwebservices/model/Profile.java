@@ -19,8 +19,6 @@ public class Profile {
     @Column
     private String email;
     @Column
-    private String studentnumber;
-    @Column
     private String phonenumber;
     @Column
     private String aboutme;
@@ -44,13 +42,12 @@ public class Profile {
     private DAOUser user;
 
 
-   /* public Profile(String username, String firstname, String lastname, String email, String studentnumber, String phonenumber, String aboutme, DAOUser user) {
+   /* public Profile(String username, String firstname, String lastname, String email, String phonenumber, String aboutme, DAOUser user) {
     	this.username = username;
 
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
-        this.studentnumber = studentnumber;
         this.phonenumber = phonenumber;
         this.aboutme = aboutme;
         this.user = user;
@@ -95,14 +92,6 @@ public class Profile {
         this.email = email;
     }
 
-    public String getStudentnumber() {
-        return studentnumber;
-    }
-
-    public void setStudentnumber(String studentnumber) {
-        this.studentnumber = studentnumber;
-    }
-    
     public String getPhonenumber() {
     	return phonenumber;
     }
