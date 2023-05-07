@@ -135,8 +135,9 @@ class LoginComponent extends Component {
         <div className="LoginComponent">
           <div className="Description">
             <div className="Heading">
-              <h1>MIGHTY FOODS<br/></h1>
+              <h1 className="Description">MIGHTY FOODS<br/></h1>
             </div>
+            <br></br>
             <p>
             Food is not just eating energy. It's an experience
             </p>
