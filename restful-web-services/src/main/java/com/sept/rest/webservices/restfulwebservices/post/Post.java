@@ -24,7 +24,6 @@ public class Post {
 
 	}
 
-
 	public Post(long id, String username, String description, Date targetDate, boolean isDone) {
 		super();
 		this.id = id;
@@ -36,6 +35,15 @@ public class Post {
 	}
 	
 	public Post addComment(PostComment comment) {
+		// Check if a comment with the same ID already exists in the list
+		for (int i = 0; i < comments.size(); i++) {
+			if (comments.get(i).getId() == comment.getId()) {
+				// Update the existing comment with the new values
+				comments.set(i, comment);
+				return this;
+			}
+		}
+		// If a comment with the same ID does not exist in the list, add the new comment
 		this.comments.add(comment);
 		return this;
 	}
@@ -115,6 +123,4 @@ public class Post {
 			return false;
 		return true;
 	}
-
-	
 }

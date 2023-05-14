@@ -100,37 +100,37 @@ public class PostJpaResource {
 	}
 	
 	@PutMapping("/jpa/users/{username}/posts/{postId}/comments/{commentId}")
-	public ResponseEntity<PostComment> updateComment(@PathVariable String username,
-													  @PathVariable long postId,
-													  @PathVariable long commentId,
-													  @RequestBody PostComment comment) {
-		Optional<Post> postOptional = postJpaRepository.findById(postId);
-		if (!postOptional.isPresent()) {
-			return ResponseEntity.notFound().build();
-		}
-	
-		Post post = postOptional.get();
-		List<PostComment> comments = post.getComments();
-	
-		Optional<PostComment> commentOptional = comments.stream()
-				.filter(c -> c.getId() == commentId)
-				.findFirst();
-	
-		if (!commentOptional.isPresent()) {
-			return ResponseEntity.notFound().build();
-		}
-	
-		PostComment oldComment = commentOptional.get();
-		oldComment.setUsername(comment.getUsername());
-		oldComment.setDescription(comment.getDescription());
-		oldComment.setTargetDate(comment.getTargetDate());
-	
-		postJpaRepository.save(post);
-	
-		return new ResponseEntity<PostComment>(oldComment, HttpStatus.OK);
-	}
-	
-	
+public ResponseEntity<PostComment> updateComment(@PathVariable String username,
+                                                  @PathVariable long postId,
+                                                  @PathVariable long commentId,
+                                                  @RequestBody PostComment comment) {
+    Optional<Post> postOptional = postJpaRepository.findById(postId);
+    if (!postOptional.isPresent()) {
+        return ResponseEntity.notFound().build();
+    }
+
+    Post post = postOptional.get();
+    List<PostComment> comments = post.getComments();
+
+    Optional<PostComment> commentOptional = comments.stream()
+            .filter(c -> c.getId() == commentId)
+            .findFirst();
+
+    if (!commentOptional.isPresent()) {
+        return ResponseEntity.notFound().build();
+    }
+
+    PostComment oldComment = commentOptional.get();
+    oldComment.setUsername(comment.getUsername());
+    oldComment.setDescription(comment.getDescription());
+    oldComment.setTargetDate(comment.getTargetDate());
+
+    // Save the updated Post object to the database
+    postJpaRepository.save(post);
+
+    return new ResponseEntity<PostComment>(oldComment, HttpStatus.OK);
+}
+
 
 	@PutMapping("/jpa/users/{username}/posts/{id}")
 	public ResponseEntity<Post> updateTodo(
