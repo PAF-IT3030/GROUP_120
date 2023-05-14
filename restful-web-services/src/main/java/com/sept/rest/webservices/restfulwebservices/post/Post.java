@@ -34,6 +34,7 @@ public class Post {
 		this.isDone = isDone;
 		this.comments = new ArrayList<PostComment>();
 	}
+	
 	public Post addComment(PostComment comment) {
 		this.comments.add(comment);
 		return this;

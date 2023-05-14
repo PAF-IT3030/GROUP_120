@@ -104,7 +104,6 @@ public class PostJpaResource {
 													  @PathVariable long postId,
 													  @PathVariable long commentId,
 													  @RequestBody PostComment comment) {
-	
 		Optional<Post> postOptional = postJpaRepository.findById(postId);
 		if (!postOptional.isPresent()) {
 			return ResponseEntity.notFound().build();

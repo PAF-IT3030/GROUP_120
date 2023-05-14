@@ -109,11 +109,9 @@ class UpdateDetails extends React.Component {
     }
 
     validate(values) {
-        
         let errors = {}
         const nameCheck = /^[a-zA-Z\s]*$/
         const phoneCheck = /^0\d{9}$/
-
         const emailCheck = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/
         
 

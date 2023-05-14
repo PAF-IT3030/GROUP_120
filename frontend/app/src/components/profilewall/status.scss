@@ -99,7 +99,6 @@
 #blockColorblindContent {
     background: #edf2f6;
 }
-
 .comments{
     border-top: 1px solid #d3d3d338;
     & .commentHolder{
@@ -114,7 +113,7 @@
                 font-size: .7em;
             }
         }
-
+        
         @include media("<=tablet", "<=576px") {
             & input {
                 width: 100%;

@@ -57,7 +57,6 @@ public class JwtTokenUtil implements Serializable {
   }
 
   private Boolean ignoreTokenExpiration(String token) {
-    // here you specify tokens, for that the expiration is ignored
     return false;
   }
 
@@ -90,7 +89,6 @@ public class JwtTokenUtil implements Serializable {
   }
 
   public Boolean validateToken(String token, UserDetails userDetails) {
-//    JwtUserDetails user = (JwtUserDetails) userDetails;
     final String username = getUsernameFromToken(token);
     return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
   }

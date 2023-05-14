@@ -1,40 +1,46 @@
-import axios from 'axios'
-import { API_URL, JPA_API_URL } from '../../Constants'
+import axios from 'axios';
+import { API_URL, JPA_API_URL } from '../../Constants';
 
 class PostDataService {
+  retrieveAllPosts(name) {
+    return axios.get(`${JPA_API_URL}/users/${name}/posts`);
+  }
 
-    retrieveAllPosts(name) {
-        return axios.get(`${JPA_API_URL}/users/${name}/posts`);
-    }
+  retrieveAll() {
+    return axios.get(`${JPA_API_URL}/users/posts`);
+  }
 
-    retrieveAll() {
-        return axios.get(`${JPA_API_URL}/users/posts`);
-    }
+  retrievePost(name, id) {
+    return axios.get(`${JPA_API_URL}/users/${name}/posts/${id}`);
+  }
 
-    retrievePost(name, id) {
-        return axios.get(`${JPA_API_URL}/users/${name}/posts/${id}`);
-    }
+  deletePost(name, id) {
+    return axios.delete(`${JPA_API_URL}/users/${name}/posts/${id}`);
+  }
 
-    deletePost(name, id) {
-        return axios.delete(`${JPA_API_URL}/users/${name}/posts/${id}`);
-    }
+  updatePost(name, id, todo) {
+    return axios.put(`${JPA_API_URL}/users/${name}/posts/${id}`, todo);
+  }
 
-    updatePost(name, id, todo) {
-        return axios.put(`${JPA_API_URL}/users/${name}/posts/${id}`, todo);
-    }
+  createPost(name, todo) {
+    return axios.post(`${JPA_API_URL}/users/${name}/posts/`, todo);
+  }
 
-    createPost(name, todo) {
-        return axios.post(`${JPA_API_URL}/users/${name}/posts/`, todo);
-    }
+  retrievePostComments(name, id) {
+    return axios.get(`${JPA_API_URL}/users/${name}/posts/${id}/comments`);
+  }
 
-    retrievePostComments(name, id) {
-        return axios.get(`${JPA_API_URL}/users/${name}/posts/${id}/comments`);
-    }
+  postComment(name, id, comment) {
+    return axios.post(`${JPA_API_URL}/users/${name}/posts/${id}/comments`, comment);
+  }
 
-    postComment(name, id, comment) {
-        return axios.post(`${JPA_API_URL}/users/${name}/posts/${id}/comments`, comment);
-    }
+  updateComment(name, id, commentId, comment) {
+    return axios.put(`${JPA_API_URL}/users/${name}/posts/${id}/comments/${commentId}`, comment);
+  }
 
+  deleteComment(name, id, commentId) {
+    return axios.delete(`${JPA_API_URL}/users/${name}/posts/${id}/comments/${commentId}`);
+  }
 }
 
-export default new PostDataService()
+export default new PostDataService();
