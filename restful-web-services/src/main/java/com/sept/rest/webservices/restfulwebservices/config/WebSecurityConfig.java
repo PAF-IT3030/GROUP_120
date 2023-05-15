@@ -12,6 +12,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.annotation.web.configurers.oauth2.client.OAuth2LoginConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -58,26 +59,46 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
-            .csrf().disable()// dont authenticate this particular request
-                .authorizeRequests().antMatchers("/background/*","/avatar/*","/downloadFile/*","/jpa/uploadBackground/*","/jpa/uploadAvatar/*","/jpa/checkuser/**","/updateProfile","/authenticate", "/register", "/ws/**", "/ws", "/app/**", "/topic/**").permitAll().and()
-            .exceptionHandling().authenticationEntryPoint(jwtUnAuthorizedResponseAuthenticationEntryPoint).and()
-            .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
+            .csrf().disable()
             .authorizeRequests()
-            .anyRequest().authenticated();
-
-       httpSecurity
+                .antMatchers("/background/*", "/avatar/*", "/downloadFile/*", "/jpa/uploadBackground/*",
+                        "/jpa/uploadAvatar/*", "/jpa/checkuser/**", "/updateProfile", "/authenticate", "/register",
+                        "/ws/**", "/ws", "/app/**", "/topic/**", "/**", "/").permitAll()
+                .anyRequest().authenticated()
+                .and()
+            .exceptionHandling().authenticationEntryPoint(jwtUnAuthorizedResponseAuthenticationEntryPoint)
+                .and()
+            .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and()
+            .authorizeRequests()
+                .anyRequest().authenticated()
+                .and()
+            .oauth2Login()
+                .loginPage("/oauth2/authorization/google") // Redirect to Google OAuth2 login page
+                .defaultSuccessUrl("/login/success") // Redirect URL after successful authentication
+                .failureUrl("/login/error") // Redirect URL after authentication failure
+                .and()
+            .logout()
+                .logoutSuccessUrl("/") // Redirect URL after logout
+                .invalidateHttpSession(true)
+                .deleteCookies("JSESSIONID");
+    
+        httpSecurity
             .addFilterBefore(jwtAuthenticationTokenFilter, UsernamePasswordAuthenticationFilter.class);
-        
+    
         httpSecurity
             .headers()
-            .frameOptions().sameOrigin()  //H2 Console Needs this setting
-            .cacheControl(); //disable caching
+            .frameOptions().sameOrigin()
+            .cacheControl();
     }
 
     @Override
     public void configure(WebSecurity webSecurity) throws Exception {
         webSecurity
-            .ignoring().antMatchers(HttpMethod.POST, "/register","/updateProfile","/jpa/checkuser/**","/jpa/uploadAvatar/*","/downloadFile/*","/jpa/uploadBackground/*").and()
+            .ignoring()
+            .antMatchers(HttpMethod.POST, "/register", "/updateProfile", "/jpa/checkuser/**", "/jpa/uploadAvatar/*",
+                "/downloadFile/*", "/jpa/uploadBackground/*")
+            .and()
             .ignoring()
             .antMatchers(
                 HttpMethod.POST,
@@ -88,11 +109,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .ignoring()
             .antMatchers(
                 HttpMethod.GET,
-                "/" 
+                "/"
             )
             .and()
             .ignoring()
-            .antMatchers("/h2-console/**/**");//Should not be in Production!
+            .antMatchers("/h2-console/**/**"); // Should not be in Production!
     }
 }
-

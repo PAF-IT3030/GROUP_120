@@ -71,6 +71,9 @@ export class Login extends React.Component {
               cookiePolicy={'single_host_origin'}
               isSignedIn={true}
             />
+
+          <a href="/oauth2/authorization/google">Login with Google</a>
+
           </div>
           
         </div>
